@@ -1,6 +1,7 @@
 # Flappy Bird Game
 
-![Flappy Bird Gameplay](readme_images/screen_1.png)
+![Flappy Bird Gameplay](https://github.com/yuriysyt/Flappy-Bird/raw/main/readme_images/screen_1.png)
+
 
 ## Introduction
 This code represents a simple implementation of the Flappy Bird game using the Pygame library. The game consists of a bird that the player can control to avoid obstacles and score points.
