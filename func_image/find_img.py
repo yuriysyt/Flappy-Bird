@@ -20,10 +20,6 @@ class images:
     rotateTubeImg = pygame.transform.flip(tubeImg, False, True)
     welcomeImg = pygame.image.load(os.path.join(image_folder, "welcome.png"))
 
-
-import pygame
-import os
-
 def img_spawn(screen):
     player_pos = pygame.Vector2(screen.get_width() / 1000, screen.get_height() / 2)
     background_pos = pygame.Vector2(screen.get_width() / 1, screen.get_height() / 1)
@@ -31,7 +27,6 @@ def img_spawn(screen):
     tree_pos = pygame.Vector2(screen.get_width() / 1.5, screen.get_height() / 1.7)
     sky_pos = pygame.Vector2(screen.get_width() / 400, screen.get_height() / 1500)
     gameover_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
-    text_wrapper_pos = pygame.Vector2(screen.get_width() / 1500, screen.get_height() / 1.3)
     tube_pos = pygame.Vector2(screen.get_width() / 1500, screen.get_height() / 1.3)
     welcome_pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 

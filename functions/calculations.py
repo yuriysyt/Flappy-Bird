@@ -8,6 +8,8 @@ class calculations:
     def calculate(self):
         keys = pygame.key.get_pressed()
         if not self.losing:
+            if keys[pygame.K_ESCAPE]:
+                self.running = False
             if keys[pygame.K_w] and not self.is_jumping:
                 self.player_pos.y -= 50
                 self.is_jumping = True
@@ -50,7 +52,7 @@ class calculations:
                 scaled_image = pygame.transform.scale(images.tubeImg, param_scale)
                 scaled_image_rotate = pygame.transform.scale(images.rotateTubeImg, param_scale)
                 scaled_image = scaled_image if updown == 0 else scaled_image_rotate
-                screen_position = (pos + self.tube_pos.x, 500 if updown == 0 else self.screen.get_height() / 1500)
+                screen_position = (pos + self.tube_pos.x, self.screen.get_height() - 200 if updown == 0 else self.screen.get_height() / 1500)
                 self.screen.blit(scaled_image, screen_position)
                 calculations.lose_game(self, scaled_image, screen_position)
 

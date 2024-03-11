@@ -9,7 +9,7 @@ class GameLoop:
     dt = 0
 
     def __init__(self):
-        self.screen = pygame.display.set_mode((GameLoop.width, GameLoop.height))
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.clock = pygame.time.Clock()
         pygame.init()
         self.running = True   
