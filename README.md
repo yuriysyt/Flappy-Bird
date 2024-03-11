@@ -1,5 +1,7 @@
 # Flappy Bird Game
 
+![Flappy Bird Gameplay](/path/to/flappy_bird_gameplay.png)
+
 ## Introduction
 This code represents a simple implementation of the Flappy Bird game using the Pygame library. The game consists of a bird that the player can control to avoid obstacles and score points.
 
