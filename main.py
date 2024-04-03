@@ -22,7 +22,7 @@ class GameLoop:
 
     def game_loop(self):
         while self.running:
-            pass
+            self.input()
 
 
 if __name__ == "__main__":
