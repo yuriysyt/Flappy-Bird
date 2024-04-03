@@ -12,7 +12,12 @@ class GameLoop:
 
 
     def input(self):
-        pass
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
+            if event.type == pygame.MOUSEBUTTONDOWN and self.losing:
+                self.player_pos, self.ground_pos, self.tree_pos, self.sky_pos, self.tube_pos, self.background_pos, self.gameover_pos, self.welcome_pos = img_spawn(self.screen)
+                self.losing = False
                 
 
     def game_loop(self):
