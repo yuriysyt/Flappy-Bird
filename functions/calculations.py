@@ -12,6 +12,15 @@ class calculations:
         self.sky_pos = np.array([0, 0])
         self.tree_pos = np.array([0, 0])
         self.tube_pos = np.array([0, 0])
+
+        # Initialize other variables
+        self.running = True
+        self.losing = False
+        self.is_jumping = False
+        self.current_time = pygame.time.get_ticks()
+        self.dt = 1
+        self.gravity = 0.2
+        self.fall_speed = 0
         
     def calculate(self):
         pass
