@@ -23,4 +23,37 @@ class calculations:
         self.fall_speed = 0
         
     def calculate(self):
-        pass
+        keys = pygame.key.get_pressed()
+        if not self.losing:
+            if keys[pygame.K_ESCAPE]:
+                self.running = False
+            if keys[pygame.K_w] and not self.is_jumping:
+                self.player_pos[1] -= 50
+                self.is_jumping = True
+                self.current_time = pygame.time.get_ticks()
+        
+            if self.is_jumping:
+                self.player_pos[1] -= 10 * self.dt
+                self.fall_speed = 1
+            else:
+                self.fall_speed -= self.gravity
+                self.player_pos[1] -= self.fall_speed
+
+            # Update positions using NumPy array operations
+            self.ground_pos[0] -= 5
+            self.background_pos[0] -= 5
+            self.sky_pos[0] -= 5
+            self.tree_pos[0] -= 5
+            self.tube_pos[0] -= 5
+
+            if pygame.time.get_ticks() > self.current_time + 300:
+                self.is_jumping = False
+
+        if self.ground_pos[0] < -300:
+            self.ground_pos[0] = 0
+
+        if self.sky_pos[0] < -600:
+            self.sky_pos[0] = 0
+        
+        if self.tree_pos[0] < -300:
+            self.tree_pos[0] = (self.screen.get_width()) + 50
