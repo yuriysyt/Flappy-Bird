@@ -19,4 +19,12 @@ class DrawingTool():
            # self.screen.blit(images.skyImg, (self.sky_pos.x + 600 * i, self.sky_pos.y))
 
         calculations.create_level(self)
+
+        self.screen.blit(images.treeImg, self.tree_pos)
+
+        if self.losing:
+            image_rect = images.gameoverImg.get_rect()
+            image_rect.center = self.gameover_pos
+            self.screen.blit(images.gameoverImg, (image_rect.x, image_rect.y -100))
+            self.screen.blit(images.welcomeImg,(image_rect.x, image_rect.y))
        
