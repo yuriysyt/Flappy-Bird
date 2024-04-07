@@ -1,5 +1,6 @@
 import pygame
 from func_image.find_img import img_spawn
+from functions.draw import DrawingTool
 
 class GameLoop:
     width, height = 1280,720
