@@ -28,3 +28,5 @@ class DrawingTool():
             self.screen.blit(images.gameoverImg, (image_rect.x, image_rect.y -100))
             self.screen.blit(images.welcomeImg,(image_rect.x, image_rect.y))
        
+        pygame.display.flip()
+        self.clock.tick(300)
