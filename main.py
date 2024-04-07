@@ -36,6 +36,8 @@ class GameLoop:
     def game_loop(self):
         while self.running:
             self.input()
+            calculations.calculate(self)
+            DrawingTool.draw(self)
 
 
 if __name__ == "__main__":
