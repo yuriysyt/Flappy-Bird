@@ -57,3 +57,15 @@ class calculations:
         
         if self.tree_pos[0] < -300:
             self.tree_pos[0] = (self.screen.get_width()) + 50
+
+    def create_background(self):
+        for ipos in range(len(maps.pos)):
+            current_pos = (400 * ipos) + self.background_pos[0]
+            if current_pos > - 1000 and current_pos < self.screen.get_height() + 1000:
+                self.screen.blit(images.backgroundImg, ((400 * ipos) + self.background_pos[0], self.background_pos[1]))
+
+    def lose_game(self, scaled_image, screen_position):
+        image_rect = scaled_image.get_rect(topleft=screen_position)
+        player_rect = pygame.Rect(self.player_pos[0], self.player_pos[1], 100, 50) 
+        if image_rect.colliderect(player_rect):
+            self.losing = True
