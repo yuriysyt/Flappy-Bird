@@ -26,8 +26,13 @@ class DrawingTool():
         if self.losing:
             image_rect = images.gameoverImg.get_rect()
             image_rect.center = self.gameover_pos
-            self.screen.blit(images.gameoverImg, (image_rect.x, image_rect.y -100))
+            self.screen.blit(images.gameoverImg, (image_rect.x, image_rect.y - 100))
             self.screen.blit(images.welcomeImg,(image_rect.x, image_rect.y))
+
+        if self.winning:
+            image_rect = images.winImg.get_rect()
+            image_rect.center = self.gameover_pos
+            self.screen.blit(images.winImg, (image_rect.x, image_rect.y - 100))
         
         font = pygame.font.SysFont(None, 48)
         score_text = font.render(calculations.get_scores(self), True, '#ffffff')

@@ -28,6 +28,7 @@ class calculations:
         if not self.losing:
             if keys[pygame.K_ESCAPE]:
                 self.running = False
+                
             if keys[pygame.K_w] and not self.is_jumping:
                 self.player_pos[1] -= 50
                 print(self.player_pos[1])
@@ -53,6 +54,9 @@ class calculations:
 
         if self.ground_pos[0] < -300:
             self.ground_pos[0] = 0
+
+        if int(calculations.get_scores(self)) > maps.finish_ticks:
+            self.winning = True
         
         if self.player_pos[1] < 0 or self.player_pos[1] > self.screen.get_width() - self.screen.get_width() / 2:
             self.losing = True
