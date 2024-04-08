@@ -27,6 +27,10 @@ class DrawingTool():
             image_rect.center = self.gameover_pos
             self.screen.blit(images.gameoverImg, (image_rect.x, image_rect.y -100))
             self.screen.blit(images.welcomeImg,(image_rect.x, image_rect.y))
+        
+        font = pygame.font.SysFont(None, 48)
+        score_text = font.render(calculations.get_scores(self), True, '#ffffff')
+        self.screen.blit(score_text, (self.screen.get_width() - 100, 100))
        
         pygame.display.flip()
         self.clock.tick(300)

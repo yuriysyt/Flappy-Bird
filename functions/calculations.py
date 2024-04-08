@@ -18,6 +18,7 @@ class calculations:
         self.losing = False
         self.is_jumping = False
         self.current_time = pygame.time.get_ticks()
+        self.time_start_game = pygame.time.get_ticks()
         self.dt = 1
         self.gravity = 0.2
         self.fall_speed = 0
@@ -29,6 +30,7 @@ class calculations:
                 self.running = False
             if keys[pygame.K_w] and not self.is_jumping:
                 self.player_pos[1] -= 50
+                print(self.player_pos[1])
                 self.is_jumping = True
                 self.current_time = pygame.time.get_ticks()
         
@@ -85,3 +87,6 @@ class calculations:
         player_rect = pygame.Rect(self.player_pos[0], self.player_pos[1], 100, 50) 
         if image_rect.colliderect(player_rect):
             self.losing = True
+
+    def get_scores(self):
+        return str(pygame.time.get_ticks() - self.time_start_game)

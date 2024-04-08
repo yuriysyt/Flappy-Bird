@@ -17,6 +17,7 @@ class GameLoop:
         self.losing = False
         self.is_jumping = False
         self.current_time = 0  
+        self.time_start_game = 0
         self.down_time = 0  
         self.dt = self.clock.tick(60) / 1000
         self.gravity = 0.2
