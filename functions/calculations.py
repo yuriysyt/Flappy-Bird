@@ -53,6 +53,9 @@ class calculations:
 
         if self.ground_pos[0] < -300:
             self.ground_pos[0] = 0
+        
+        if self.player_pos[1] < 0 or self.player_pos[1] > self.screen.get_width() - self.screen.get_width() / 2:
+            self.losing = True
 
         if self.sky_pos[0] < -600:
             self.sky_pos[0] = 0
@@ -73,20 +76,22 @@ class calculations:
                 scaled_image = scaled_image if updown == 0 else scaled_image_rotate
                 screen_position = (pos + self.tube_pos[0], self.screen.get_height() - 200 if updown == 0 else self.screen.get_height() / 1500)
                 self.screen.blit(scaled_image, screen_position)
-                calculations.lose_game(self, scaled_image, screen_position)
-
+                calculations.lose_game(self, scaled_image.get_rect(topleft=screen_position), self.player_pos)
 
     def create_background(self):
         for ipos in range(len(maps.pos)):
             current_pos = (400 * ipos) + self.background_pos[0]
             if current_pos > - 1000 and current_pos < self.screen.get_height() + 1000:
-                self.screen.blit(images.backgroundImg, ((400 * ipos) + self.background_pos[0], self.background_pos[1]))
+                background_rect = images.backgroundImg.get_rect(topleft=((400 * ipos) + self.background_pos[0], self.background_pos[1]))
+                self.screen.blit(images.backgroundImg, background_rect)
+                calculations.lose_game(self, background_rect, self.player_pos)
 
-    def lose_game(self, scaled_image, screen_position):
-        image_rect = scaled_image.get_rect(topleft=screen_position)
-        player_rect = pygame.Rect(self.player_pos[0], self.player_pos[1], 100, 50) 
+    def lose_game(self, image_rect, player_pos):
+        player_rect = pygame.Rect(player_pos[0], player_pos[1], 100, 50) 
         if image_rect.colliderect(player_rect):
             self.losing = True
+
+
 
     def get_scores(self):
         return str(pygame.time.get_ticks() - self.time_start_game)

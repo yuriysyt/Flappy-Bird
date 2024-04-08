@@ -16,6 +16,7 @@ class DrawingTool():
 
         for i in range(-2, 7):
             self.screen.blit(images.groundImg, (self.ground_pos.x + 300 * i, self.ground_pos.y))
+            
            # self.screen.blit(images.skyImg, (self.sky_pos.x + 600 * i, self.sky_pos.y))
 
         calculations.create_level(self)
