@@ -1,5 +1,6 @@
 import pygame
 from func_image.find_img import img_spawn
+from functions.calculations import calculations
 from functions.draw import DrawingTool
 
 class GameLoop:
