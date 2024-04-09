@@ -85,14 +85,6 @@ class calculations:
                 self.screen.blit(scaled_image, screen_position)
                 GameOutcomeHandler.lose_game(self, scaled_image.get_rect(topleft=screen_position), self.player_pos)
 
-    def create_background(self):
-        for ipos in range(len(maps.pos)):
-            current_pos = (400 * ipos) + self.background_pos[0]
-            if current_pos > - 1000 and current_pos < self.screen.get_height() + 1000:
-                background_rect = images.backgroundImg.get_rect(topleft=((400 * ipos) + self.background_pos[0], self.background_pos[1]))
-                self.screen.blit(images.backgroundImg, background_rect)
-                GameOutcomeHandler.lose_game(self, background_rect, self.player_pos)
-
     def get_scores(self):
         if not self.losing and not self.winning:
             self.last_score = pygame.time.get_ticks() - self.time_start_game

@@ -1,13 +1,14 @@
 from levels.level_1 import maps
 from func_image.find_img import images
 import pygame
-from functions.calculations.calculations import calculations
+from functions.calculations.calculation import calculations
+from functions.calculations.background_renderer import BackgroundRenderer
 
 class DrawingTool():
     def draw(self):
         self.screen.fill('#4ec0ca')
 
-        calculations.create_background(self)
+        BackgroundRenderer.create_background(self)
         
         if self.is_jumping:
             self.screen.blit(images.upCarImg, self.player_pos)
