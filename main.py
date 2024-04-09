@@ -6,7 +6,6 @@ from functions.draw import DrawingTool
 class GameLoop:
     width, height = 1280,720
     running = False
-    dt = 0
 
     def __init__(self):
 
@@ -17,8 +16,8 @@ class GameLoop:
         self.losing = False
         self.winning = False
         self.is_jumping = False
-        self.current_time = 0  
-        self.time_start_game = 0
+        self.current_time = pygame.time.get_ticks()
+        self.time_start_game = pygame.time.get_ticks()
         self.last_score = 0
         self.down_time = 0  
         self.dt = self.clock.tick(60) / 1000

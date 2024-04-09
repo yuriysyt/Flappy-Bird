@@ -10,10 +10,7 @@ class DrawingTool():
 
         BackgroundRenderer.create_background(self)
         
-        if self.is_jumping:
-            self.screen.blit(images.upCarImg, self.player_pos)
-        else:
-            self.screen.blit(images.downCarImg, self.player_pos)
+        self.screen.blit(images.upCarImg if self.is_jumping else images.downCarImg, self.player_pos)
 
         for i in range(-2, 7):
             self.screen.blit(images.groundImg, (self.ground_pos.x + 300 * i, self.ground_pos.y))
