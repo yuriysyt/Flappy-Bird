@@ -1,7 +1,5 @@
 import pygame
 from levels.level_1 import maps
-from func_image.find_img import images
-from .lose_game import GameOutcomeHandler
 
 class calculations:
     def __init__(self):
@@ -75,3 +73,9 @@ class calculations:
             self.last_score = pygame.time.get_ticks() - self.time_start_game
 
         return str(self.last_score)
+    
+    def lose_game(self, image_rect, player_pos):
+        player_rect = pygame.Rect(player_pos[0], player_pos[1], 100, 50) 
+        if image_rect.colliderect(player_rect):
+            self.losing = True
+

@@ -1,6 +1,6 @@
 import pygame
 from func_image.find_img import images
-from functions.calculations.lose_game import GameOutcomeHandler
+from functions.calculations.calculation import calculations
 from levels.level_1 import maps
 
 class LevelRenderer:
@@ -17,4 +17,4 @@ class LevelRenderer:
                 scaled_image = scaled_image if updown == 0 else scaled_image_rotate
                 screen_position = (pos + self.tube_pos[0], self.screen.get_height() - 200 if updown == 0 else self.screen.get_height() / 1500)
                 self.screen.blit(scaled_image, screen_position)
-                GameOutcomeHandler().lose_game(scaled_image.get_rect(topleft=screen_position), self.player_pos)
+                calculations.lose_game(self, scaled_image.get_rect(topleft=screen_position), self.player_pos)
