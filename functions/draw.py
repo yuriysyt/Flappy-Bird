@@ -1,8 +1,6 @@
 from functions.calculations.score_calculator import ScoreCalculator
-from levels.level_1 import maps
 from func_image.find_img import images
 import pygame
-from functions.calculations.calculation import calculations
 from functions.calculations.background_renderer import BackgroundRenderer
 from functions.calculations.create_level import LevelRenderer
 
