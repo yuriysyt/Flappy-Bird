@@ -67,15 +67,8 @@ class calculations:
         
         if self.tree_pos[0] < -300:
             self.tree_pos[0] = (self.screen.get_width()) + 50
-
-    def get_scores(self):
-        if not self.losing and not self.winning:
-            self.last_score = pygame.time.get_ticks() - self.time_start_game
-
-        return str(self.last_score)
     
     def lose_game(self, image_rect, player_pos):
         player_rect = pygame.Rect(player_pos[0], player_pos[1], 100, 50) 
         if image_rect.colliderect(player_rect):
             self.losing = True
-

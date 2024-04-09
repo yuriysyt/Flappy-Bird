@@ -1,3 +1,4 @@
+from functions.calculations.score_calculator import ScoreCalculator
 from levels.level_1 import maps
 from func_image.find_img import images
 import pygame
@@ -35,7 +36,7 @@ class DrawingTool():
             self.screen.blit(images.winImg, (image_rect.x, image_rect.y - 100))
         
         font = pygame.font.SysFont(None, 48)
-        score_text = font.render(calculations.get_scores(self), True, '#ffffff')
+        score_text = font.render(ScoreCalculator.get_score(self), True, '#ffffff')
         self.screen.blit(score_text, (self.screen.get_width() - 100, 100))
        
         pygame.display.flip()
