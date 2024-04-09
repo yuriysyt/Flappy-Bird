@@ -19,6 +19,7 @@ class GameLoop:
         self.is_jumping = False
         self.current_time = 0  
         self.time_start_game = 0
+        self.last_score = 0
         self.down_time = 0  
         self.dt = self.clock.tick(60) / 1000
         self.gravity = 0.2
@@ -31,9 +32,10 @@ class GameLoop:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
-            if event.type == pygame.MOUSEBUTTONDOWN and self.losing:
+            if event.type == pygame.MOUSEBUTTONDOWN and self.losing or self.winning:
                 self.player_pos, self.ground_pos, self.tree_pos, self.sky_pos, self.tube_pos, self.background_pos, self.gameover_pos, self.welcome_pos, self.win_pos = img_spawn(self.screen)
-                self.losing = False
+                self.time_start_game = pygame.time.get_ticks()
+                self.losing, self.winning = False, False
                 
 
     def game_loop(self):
