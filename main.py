@@ -1,6 +1,6 @@
 import pygame
-from func_image.find_img import img_spawn
-from functions.calculations import calculations
+from func_image.find_img import images
+from functions.calculations.calculations import calculations
 from functions.draw import DrawingTool
 
 class GameLoop:
@@ -26,14 +26,15 @@ class GameLoop:
         self.jump_strength = -0.3
         self.fall_speed = 0.2
 
-        self.player_pos, self.ground_pos, self.tree_pos, self.sky_pos, self.tube_pos, self.background_pos, self.gameover_pos, self.welcome_pos, self.win_pos = img_spawn(self.screen)
+        self.player_pos, self.ground_pos, self.tree_pos, self.sky_pos, self.tube_pos, self.background_pos, self.gameover_pos, self.welcome_pos, self.win_pos = images.get_pos(self.screen)
 
     def input(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
+
             if event.type == pygame.MOUSEBUTTONDOWN and self.losing or self.winning:
-                self.player_pos, self.ground_pos, self.tree_pos, self.sky_pos, self.tube_pos, self.background_pos, self.gameover_pos, self.welcome_pos, self.win_pos = img_spawn(self.screen)
+                self.player_pos, self.ground_pos, self.tree_pos, self.sky_pos, self.tube_pos, self.background_pos, self.gameover_pos, self.welcome_pos, self.win_pos = images.get_pos(self.screen)
                 self.time_start_game = pygame.time.get_ticks()
                 self.losing, self.winning = False, False
                 

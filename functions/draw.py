@@ -1,7 +1,7 @@
 from levels.level_1 import maps
 from func_image.find_img import images
 import pygame
-from functions.calculations import calculations
+from functions.calculations.calculations import calculations
 
 class DrawingTool():
     def draw(self):

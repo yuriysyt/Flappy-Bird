@@ -1,17 +1,17 @@
 import pygame
-import numpy as np
 from levels.level_1 import maps
 from func_image.find_img import images
+from .lose_game import GameOutcomeHandler
 
 class calculations:
     def __init__(self):
         # Initialize positions using NumPy arrays
-        self.player_pos = np.array([0, 0])
-        self.ground_pos = np.array([0, 0])
-        self.background_pos = np.array([0, 0])
-        self.sky_pos = np.array([0, 0])
-        self.tree_pos = np.array([0, 0])
-        self.tube_pos = np.array([0, 0])
+        self.player_pos = [0, 0]
+        self.ground_pos = [0, 0]
+        self.background_pos = [0, 0]
+        self.sky_pos = [0, 0]
+        self.tree_pos = [0, 0]
+        self.tube_pos = [0, 0]
 
         # Initialize other variables
         self.running = True
@@ -26,6 +26,8 @@ class calculations:
         
     def calculate(self):
         keys = pygame.key.get_pressed()
+
+        
         if not self.losing and not self.winning:
             if keys[pygame.K_ESCAPE]:
                 self.running = False
@@ -81,7 +83,7 @@ class calculations:
                 scaled_image = scaled_image if updown == 0 else scaled_image_rotate
                 screen_position = (pos + self.tube_pos[0], self.screen.get_height() - 200 if updown == 0 else self.screen.get_height() / 1500)
                 self.screen.blit(scaled_image, screen_position)
-                calculations.lose_game(self, scaled_image.get_rect(topleft=screen_position), self.player_pos)
+                GameOutcomeHandler.lose_game(self, scaled_image.get_rect(topleft=screen_position), self.player_pos)
 
     def create_background(self):
         for ipos in range(len(maps.pos)):
@@ -89,12 +91,7 @@ class calculations:
             if current_pos > - 1000 and current_pos < self.screen.get_height() + 1000:
                 background_rect = images.backgroundImg.get_rect(topleft=((400 * ipos) + self.background_pos[0], self.background_pos[1]))
                 self.screen.blit(images.backgroundImg, background_rect)
-                calculations.lose_game(self, background_rect, self.player_pos)
-
-    def lose_game(self, image_rect, player_pos):
-        player_rect = pygame.Rect(player_pos[0], player_pos[1], 100, 50) 
-        if image_rect.colliderect(player_rect):
-            self.losing = True
+                GameOutcomeHandler.lose_game(self, background_rect, self.player_pos)
 
     def get_scores(self):
         if not self.losing and not self.winning:
