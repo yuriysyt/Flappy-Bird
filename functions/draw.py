@@ -3,6 +3,7 @@ from func_image.find_img import images
 import pygame
 from functions.calculations.calculation import calculations
 from functions.calculations.background_renderer import BackgroundRenderer
+from functions.calculations.create_level import LevelRenderer
 
 class DrawingTool():
     def draw(self):
@@ -17,10 +18,8 @@ class DrawingTool():
 
         for i in range(-2, 7):
             self.screen.blit(images.groundImg, (self.ground_pos.x + 300 * i, self.ground_pos.y))
-            
-           # self.screen.blit(images.skyImg, (self.sky_pos.x + 600 * i, self.sky_pos.y))
 
-        calculations.create_level(self)
+        LevelRenderer.create_level(self)
 
         self.screen.blit(images.treeImg, self.tree_pos)
 
