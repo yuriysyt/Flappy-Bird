@@ -49,3 +49,10 @@ class Calculations:
         
         if self.tree_pos[0] < -300:
             self.tree_pos[0] = (self.screen.get_width()) + 50
+
+        if self.is_jumping:
+                self.player_pos[1] -= 50 * self.dt
+                self.fall_speed = 1
+        else:
+            self.fall_speed -= self.gravity
+            self.player_pos[1] -= self.fall_speed
