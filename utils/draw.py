@@ -1,8 +1,8 @@
-from functions.calculations.score_calculator import ScoreCalculator
-from func_image.find_img import images
+from utils.calculations.score_calculator import ScoreCalculator
+from utils.images.find_img import images
 import pygame
-from functions.calculations.background_renderer import BackgroundRenderer
-from functions.calculations.create_level import LevelRenderer
+from utils.calculations.background_renderer import BackgroundRenderer
+from utils.calculations.create_level import LevelRenderer
 
 class DrawingTool():
     def draw(self):

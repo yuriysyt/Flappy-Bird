@@ -1,20 +1,22 @@
 import pygame
-from func_image.find_img import images
-from functions.calculations.calculation import calculations
-from functions.draw import DrawingTool
+
+from utils.calculations.calculation import Calculations
+from utils.draw import DrawingTool
+from utils.keyboard.keyboard import KeyboardManager
+from utils.screen.screen import DisplayManager
 
 class GameLoop:
     def __init__(self):
         self.running = True 
-        calculations.init(self)
-                
+
+        DisplayManager.init(self)
+        Calculations.init(self) 
 
     def game_loop(self):
         while self.running:
-            calculations.calculate(self)
-            calculations.input(self)
+            Calculations.calculate(self)
+            KeyboardManager.handle_keyboard(self)
             DrawingTool.draw(self)
-
 
 if __name__ == "__main__":
     game = GameLoop()
