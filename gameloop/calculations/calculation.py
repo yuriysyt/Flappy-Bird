@@ -1,7 +1,7 @@
 import pygame
-from utils.calculations.init_pos import position
+from gameloop.calculations.init_pos import position
 from levels.level_1 import maps
-from utils.calculations.score_calculator import ScoreCalculator
+from gameloop.calculations.score_calculator import ScoreCalculator
 
 class Calculations:
 

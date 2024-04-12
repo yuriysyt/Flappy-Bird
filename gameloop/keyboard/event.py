@@ -1,6 +1,6 @@
 import pygame
 
-from utils.calculations.init_pos import position
+from gameloop.calculations.init_pos import position
 
 class EventHandling:
     def handle_events(self):

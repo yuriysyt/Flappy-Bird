@@ -1,5 +1,5 @@
 
-from utils.images.find_img import images
+from gameloop.images.find_img import images
 
 
 class position:

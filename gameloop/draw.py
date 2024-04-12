@@ -1,8 +1,8 @@
-from utils.calculations.score_calculator import ScoreCalculator
-from utils.images.find_img import images
+from gameloop.calculations.score_calculator import ScoreCalculator
+from gameloop.images.find_img import images
 import pygame
-from utils.calculations.background_renderer import BackgroundRenderer
-from utils.calculations.create_level import LevelRenderer
+from gameloop.calculations.background_renderer import BackgroundRenderer
+from gameloop.calculations.create_level import LevelRenderer
 
 class DrawingTool():
     def draw(self):

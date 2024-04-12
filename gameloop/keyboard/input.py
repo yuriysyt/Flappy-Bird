@@ -1,6 +1,6 @@
 import pygame
 
-from utils.calculations.jump import JumpCalculator
+from gameloop.calculations.jump import JumpCalculator
 
 class InputHandling:
 

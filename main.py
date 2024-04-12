@@ -1,9 +1,9 @@
 import pygame
 from pygame.locals import *
-from utils.calculations.calculation import Calculations
-from utils.draw import DrawingTool
-from utils.keyboard.keyboard import KeyboardManager
-from utils.screen.screen import DisplayManager
+from gameloop.calculations.calculation import Calculations
+from gameloop.draw import DrawingTool
+from gameloop.keyboard.keyboard import KeyboardManager
+from gameloop.screen.screen import DisplayManager
 
 class Menu:
     def __init__(self):

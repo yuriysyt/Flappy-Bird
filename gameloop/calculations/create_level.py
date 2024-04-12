@@ -1,6 +1,6 @@
 import pygame
-from utils.calculations.lose_game import CollisionDetector
-from utils.images.find_img import images
+from gameloop.calculations.lose_game import CollisionDetector
+from gameloop.images.find_img import images
 from levels.level_1 import maps
 
 class LevelRenderer:
