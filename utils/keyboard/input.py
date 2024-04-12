@@ -8,8 +8,8 @@ class InputHandling:
         self.keys = pygame.key.get_pressed()
 
         if not self.losing and not self.winning:
-            self.handle_escape(self)
-            self.handle_jump(self)
+            InputHandling.handle_escape(self)
+            InputHandling.handle_jump(self)
 
     def handle_escape(self):
         if self.keys[pygame.K_ESCAPE]:
