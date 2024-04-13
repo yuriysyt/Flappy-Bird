@@ -35,24 +35,24 @@ class Calculations:
             if pygame.time.get_ticks() > self.current_time + 300:
                 self.is_jumping = False
 
-        if self.ground_pos[0] < -300:
-            self.ground_pos[0] = 0
+            if self.ground_pos[0] < -300:
+                self.ground_pos[0] = 0
 
-        if int(ScoreCalculator.get_score(self)) > maps.finish_ticks:
-            self.winning = True
-        
-        if self.player_pos[1] < 0 or self.player_pos[1] > self.screen.get_width() - self.screen.get_width() / 4:
-            self.losing = True
+            if int(ScoreCalculator.get_score(self)) > maps.finish_ticks:
+                self.winning = True
+            
+            if self.player_pos[1] < 0 or self.player_pos[1] > self.screen.get_width() - self.screen.get_width() / 4:
+                self.losing = True
 
-        if self.sky_pos[0] < -600:
-            self.sky_pos[0] = 0
-        
-        if self.tree_pos[0] < -300:
-            self.tree_pos[0] = (self.screen.get_width()) + 50
+            if self.sky_pos[0] < -600:
+                self.sky_pos[0] = 0
+            
+            if self.tree_pos[0] < -300:
+                self.tree_pos[0] = (self.screen.get_width()) + 50
 
-        if self.is_jumping:
-                self.player_pos[1] -= 50 * self.dt
-                self.fall_speed = 1
-        else:
-            self.fall_speed -= self.gravity
-            self.player_pos[1] -= self.fall_speed
+            if self.is_jumping:
+                    self.player_pos[1] -= 50 * self.dt
+                    self.fall_speed = 1
+            else:
+                self.fall_speed -= self.gravity
+                self.player_pos[1] -= self.fall_speed

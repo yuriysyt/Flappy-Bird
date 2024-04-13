@@ -20,7 +20,7 @@ class Menu:
         self.flap_interval = 10
 
     def draw_menu(self):
-        self.screen.fill((0, 0, 0))
+        self.screen.fill('#4ec0ca')
         for i, option in enumerate(self.options):
             color = (255, 255, 255) if i == self.selected_option else (128, 128, 128)
             text = self.font.render(option, True, color)

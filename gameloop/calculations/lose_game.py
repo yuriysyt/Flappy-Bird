@@ -5,3 +5,4 @@ class CollisionDetector:
         player_rect = pygame.Rect(player_pos[0], player_pos[1], 100, 50) 
         if image_rect.colliderect(player_rect):
             self.losing = True
+            self.fall_speed = 0.2

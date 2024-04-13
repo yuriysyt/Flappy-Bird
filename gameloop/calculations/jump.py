@@ -2,8 +2,8 @@ import pygame
 
 class JumpCalculator:
     @staticmethod
-    def calculate_jump(game):
-        game.player_pos[1] -= 50
-        print(game.player_pos[1])
-        game.is_jumping = True
-        game.current_time = pygame.time.get_ticks()
+    def calculate_jump(self):
+        self.player_pos[1] -= 50
+        print(self.player_pos[1])
+        self.is_jumping = True
+        self.current_time = pygame.time.get_ticks()
