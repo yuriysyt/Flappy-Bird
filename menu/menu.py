@@ -2,27 +2,43 @@ import pygame
 from gameloop.game_loop import GameLoop
 from gameloop.screen.screen import DisplayManager
 from pygame.locals import *
+from .images.find_img import images
 
 class Menu:
     def __init__(self):
-        pygame.init()  # Initialize Pygame here
+        pygame.init()
         DisplayManager.init(self)
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.Font(None, 36)  # Now it's safe to create font objects
+        self.font = pygame.font.Font(None, 36)
         self.options = ["Start Game", "Choose Level", "Quit"]
         self.selected_option = 0
+        self.bird_img = images.flippyImg  # Add your bird image here
+        self.bird_rect = self.bird_img.get_rect()
+        self.bird_rect.centerx = 150
+        self.bird_rect.centery = 230
+        self.flap_timer = 0
+        self.flap_interval = 10
 
     def draw_menu(self):
         self.screen.fill((0, 0, 0))
         for i, option in enumerate(self.options):
             color = (255, 255, 255) if i == self.selected_option else (128, 128, 128)
             text = self.font.render(option, True, color)
-            self.screen.blit(text, (200, 200 + i * 50))
+            self.screen.blit(text, (250, 200 + i * 50))
+        self.screen.blit(self.bird_img, self.bird_rect)
+
+    def animate_bird(self):
+        if pygame.time.get_ticks() - self.flap_timer > self.flap_interval:
+            self.bird_rect.centery -= 1.5
+            if self.bird_rect.centery < 220:
+                self.bird_rect.centery = 260
+            self.flap_timer = pygame.time.get_ticks()
 
     def menu_loop(self):
         while True:
             self.screen.fill((0, 0, 0))
             self.draw_menu()
+            self.animate_bird()
             pygame.display.flip()
 
             for event in pygame.event.get():
