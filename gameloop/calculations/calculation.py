@@ -1,6 +1,5 @@
 import pygame
 from gameloop.calculations.init_pos import position
-from levels.level_1 import maps
 from gameloop.calculations.score_calculator import ScoreCalculator
 
 class Calculations:
@@ -38,7 +37,7 @@ class Calculations:
             if self.ground_pos[0] < -300:
                 self.ground_pos[0] = 0
 
-            if int(ScoreCalculator.get_score(self)) > maps.finish_ticks:
+            if int(ScoreCalculator.get_score(self)) > self.selected_level.finish_ticks:
                 self.winning = True
             
             if self.player_pos[1] < 0 or self.player_pos[1] > self.screen.get_width() - self.screen.get_width() / 4:
