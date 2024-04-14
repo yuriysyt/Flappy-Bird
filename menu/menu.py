@@ -9,15 +9,16 @@ class Menu:
         pygame.init()
         DisplayManager.init(self)
         self.clock = pygame.time.Clock()
-        self.font = pygame.font.Font(None, 36)
+        self.font = pygame.font.Font(None, 48)
         self.options = ["Start Game", "Choose Level", "Quit"]
         self.selected_option = 0
-        self.bird_img = images.flippyImg  # Add your bird image here
+        self.bird_img = images.flippyImg 
         self.bird_rect = self.bird_img.get_rect()
         self.bird_rect.centerx = 150
-        self.bird_rect.centery = 230
+        self.bird_rect.centery = 290
         self.flap_timer = 0
         self.flap_interval = 10
+        self.up = True
 
     def draw_menu(self):
         self.screen.fill('#4ec0ca')
@@ -29,9 +30,19 @@ class Menu:
 
     def animate_bird(self):
         if pygame.time.get_ticks() - self.flap_timer > self.flap_interval:
-            self.bird_rect.centery -= 1.5
-            if self.bird_rect.centery < 220:
-                self.bird_rect.centery = 260
+
+            if self.up:
+                self.bird_rect.centery -= 1.5
+            else:
+                self.bird_rect.centery += 1.4
+
+            print(self.bird_rect.centery)
+
+            if self.bird_rect.centery < 240:
+                self.up = False
+            elif self.bird_rect.centery > 290:
+                self.up = True
+
             self.flap_timer = pygame.time.get_ticks()
 
     def menu_loop(self):
