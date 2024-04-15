@@ -3,6 +3,9 @@ from gameloop.calculations.create_level import LevelRenderer
 from gameloop.game_loop import GameLoop
 from gameloop.screen.screen import DisplayManager
 from pygame.locals import *
+
+from menu.calculations.bird_animation import BirdAnimator
+from menu.draw.draw import MenuDrawer
 from .images.find_img import images
 from levels import level_1, level_2, level_3, level_4, level_5 
 
@@ -45,7 +48,7 @@ class Menu:
         while True:
             self.screen.fill((0, 0, 0))
             MenuDrawer.draw_menu(self)
-            self.animate_bird()
+            BirdAnimator.animate_bird(self)
             pygame.display.flip()
 
             for event in pygame.event.get():
