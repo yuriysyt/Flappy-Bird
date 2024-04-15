@@ -4,7 +4,7 @@ from gameloop.game_loop import GameLoop
 from gameloop.screen.screen import DisplayManager
 from pygame.locals import *
 from .images.find_img import images
-from levels import level_1, level_2, level_3, level_4, level_5  # Importing level modules
+from levels import level_1, level_2, level_3, level_4, level_5 
 
 class Menu:
     def __init__(self):
@@ -23,13 +23,6 @@ class Menu:
         self.up = True
         self.selected_level = None
 
-    def draw_menu(self):
-        self.screen.fill('#4ec0ca')
-        for i, option in enumerate(self.options):
-            color = (255, 255, 255) if i == self.selected_option else (128, 128, 128)
-            text = self.font.render(option, True, color)
-            self.screen.blit(text, (250, 200 + i * 50))
-        self.screen.blit(self.bird_img, self.bird_rect)
 
     def animate_bird(self):
         if pygame.time.get_ticks() - self.flap_timer > self.flap_interval:
@@ -51,7 +44,7 @@ class Menu:
     def menu_loop(self):
         while True:
             self.screen.fill((0, 0, 0))
-            self.draw_menu()
+            MenuDrawer.draw_menu(self)
             self.animate_bird()
             pygame.display.flip()
 
