@@ -3,9 +3,9 @@ from gameloop.calculations.create_level import LevelRenderer
 from gameloop.game_loop import GameLoop
 from gameloop.screen.screen import DisplayManager
 from pygame.locals import *
-
 from menu.calculations.bird_animation import BirdAnimator
 from menu.draw.draw import MenuDrawer
+from menu.keyboard.event import MenuEventHandling
 from .images.find_img import images
 from levels import level_1, level_2, level_3, level_4, level_5 
 
@@ -26,7 +26,6 @@ class Menu:
         self.up = True
         self.selected_level = None
 
-
     def menu_loop(self):
         while True:
             self.screen.fill((0, 0, 0))
@@ -34,30 +33,15 @@ class Menu:
             BirdAnimator.animate_bird(self)
             pygame.display.flip()
 
-            for event in pygame.event.get():
-                if event.type == QUIT:
-                    pygame.quit()
-                    return
-                elif event.type == KEYDOWN:
-                    if event.key == pygame.K_UP:
-                        self.selected_option = (self.selected_option - 1) % len(self.options)
-                    elif event.key == pygame.K_DOWN:
-                        self.selected_option = (self.selected_option + 1) % len(self.options)
-                    elif event.key == pygame.K_RETURN:
-                        if self.selected_option == 0:
-                            path_to_level_1 =  getattr(eval(f'level_{1}'), 'maps', None)
-                            print(path_to_level_1)
-                            game = GameLoop(self.selected_level if self.selected_level else path_to_level_1)
-                            game.game_loop()
-                        elif self.selected_option == 1:
-                            self.select_level()
-                        elif self.selected_option == 2:
-                            pygame.quit()
-                            return
+            MenuEventHandling.handle_events({
+                pygame.K_UP: lambda: setattr(self, 'selected_option', (self.selected_option - 1) % len(self.options)),
+                pygame.K_DOWN: lambda: setattr(self, 'selected_option', (self.selected_option + 1) % len(self.options)),
+                pygame.K_RETURN: lambda: self.menu_actions(),
+            })
 
             self.clock.tick(30)
 
-    def select_level(self):
+    def select_level_loop(self):
         self.selected_option = 0  # Start from the first level option
         while True:
             self.screen.fill((0, 0, 0))
@@ -68,18 +52,25 @@ class Menu:
                 self.screen.blit(text, (250, 200 + i * 50))
             pygame.display.flip()
 
-            for event in pygame.event.get():
-                if event.type == QUIT:
-                    pygame.quit()
-                    return
-                elif event.type == KEYDOWN:
-                    if event.key == pygame.K_UP:
-                        self.selected_option = (self.selected_option - 1) % 5
-                    elif event.key == pygame.K_DOWN:
-                        self.selected_option = (self.selected_option + 1) % 5
-                    elif event.key == pygame.K_RETURN:
-                        if self.selected_option >= 0:  # Ensure selected_option is non-negative
-                            self.selected_level = getattr(eval(f"level_{self.selected_option + 1}"), "maps", None)
-                            return
+            MenuEventHandling.handle_events({
+                pygame.K_UP: lambda: setattr(self, 'selected_option', (self.selected_option - 1) % 5),
+                pygame.K_DOWN: lambda: setattr(self, 'selected_option', (self.selected_option + 1) % 5),
+                pygame.K_RETURN: lambda: self.select_level_actions(),
+            })
 
+    def menu_actions(self):
+        if self.selected_option == 0:
+            path_to_level_1 =  getattr(eval(f'level_{1}'), 'maps', None)
+            print(path_to_level_1)
+            game = GameLoop(self.selected_level if self.selected_level else path_to_level_1)
+            game.game_loop()
+        elif self.selected_option == 1:
+            self.select_level_loop()
+        elif self.selected_option == 2:
+            pygame.quit()
+            return
 
+    def select_level_actions(self):
+        if self.selected_option >= 0:  # Ensure selected_option is non-negative
+            self.selected_level = getattr(eval(f"level_{self.selected_option + 1}"), "maps", None)
+            self.menu_loop()  # Return to the menu loop after selecting a level
