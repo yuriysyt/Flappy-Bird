@@ -28,7 +28,6 @@ class Menu:
 
     def menu_loop(self):
         while True:
-            self.screen.fill((0, 0, 0))
             MenuDrawer.draw_menu(self)
             BirdAnimator.animate_bird(self)
             pygame.display.flip()
@@ -44,12 +43,10 @@ class Menu:
     def select_level_loop(self):
         self.selected_option = 0  # Start from the first level option
         while True:
-            self.screen.fill((0, 0, 0))
-            selected_level_text = [f"Level {i}: {getattr(eval(f'level_{i}'), 'maps', None)}" for i in range(1, 6)]
-            for i, level_text in enumerate(selected_level_text):
-                color = (255, 255, 255) if i == self.selected_option else (128, 128, 128)  # Adjust index here
-                text = self.font.render(level_text, True, color)
-                self.screen.blit(text, (250, 200 + i * 50))
+            self.screen.fill((78, 192, 202))
+            self.options = [f"Level {i}: {getattr(eval(f'level_{i}'), 'maps', None)}" for i in range(1, 6)]
+            MenuDrawer.draw_menu(self)
+            BirdAnimator.animate_bird(self)
             pygame.display.flip()
 
             MenuEventHandling.handle_events({
@@ -73,4 +70,5 @@ class Menu:
     def select_level_actions(self):
         if self.selected_option >= 0:  # Ensure selected_option is non-negative
             self.selected_level = getattr(eval(f"level_{self.selected_option + 1}"), "maps", None)
+            self.options = ["Start Game", "Choose Level", "Quit"]
             self.menu_loop()  # Return to the menu loop after selecting a level
