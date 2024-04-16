@@ -1,10 +1,7 @@
+import pygame
+from pygame.locals import *
+from levels import level_1, level_2, level_3, level_4, level_5 
 class LevelSelector:
-    def __init__(self, screen, font):
-        self.screen = screen
-        self.font = font
-        self.selected_option = 0
-        self.selected_level = None
-
     def select_level(self):
         # Start from the first level option
         self.selected_option = 0  
