@@ -43,7 +43,6 @@ class Menu:
     def select_level_loop(self):
         self.selected_option = 0  # Start from the first level option
         while True:
-            self.screen.fill((78, 192, 202))
             self.options = [f"Level {i}: {getattr(eval(f'level_{i}'), 'maps', None)}" for i in range(1, 6)]
             MenuDrawer.draw_menu(self)
             BirdAnimator.animate_bird(self)

@@ -9,4 +9,5 @@ class MenuEventHandling:
                 pygame.quit()
                 return
             elif event.type == KEYDOWN:
-                actions[event.key]()
+                if event.key in actions:
+                    actions[event.key]()
