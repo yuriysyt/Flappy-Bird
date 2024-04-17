@@ -16,6 +16,7 @@ class Menu:
         self.clock = pygame.time.Clock()
         self.font = pygame.font.Font(None, 48)
         self.options = ["Start Game", "Choose Level", "Quit"]
+        self.page = 'menu'
         self.selected_option = 0
         self.bird_img = images.flippyImg 
         self.bird_rect = self.bird_img.get_rect()
@@ -31,28 +32,14 @@ class Menu:
             MenuDrawer.draw_menu(self)
             BirdAnimator.animate_bird(self)
             pygame.display.flip()
-
             MenuEventHandling.handle_events({
                 pygame.K_UP: lambda: setattr(self, 'selected_option', (self.selected_option - 1) % len(self.options)),
                 pygame.K_DOWN: lambda: setattr(self, 'selected_option', (self.selected_option + 1) % len(self.options)),
-                pygame.K_RETURN: lambda: self.menu_actions(),
+                pygame.K_RETURN: lambda: self.menu_actions()if self.page == 'menu' else self.select_level_actions(),
             })
+
 
             self.clock.tick(30)
-
-    def select_level_loop(self):
-        self.selected_option = 0  # Start from the first level option
-        while True:
-            self.options = [f"Level {i}: {getattr(eval(f'level_{i}'), 'maps', None)}" for i in range(1, 6)]
-            MenuDrawer.draw_menu(self)
-            BirdAnimator.animate_bird(self)
-            pygame.display.flip()
-
-            MenuEventHandling.handle_events({
-                pygame.K_UP: lambda: setattr(self, 'selected_option', (self.selected_option - 1) % 5),
-                pygame.K_DOWN: lambda: setattr(self, 'selected_option', (self.selected_option + 1) % 5),
-                pygame.K_RETURN: lambda: self.select_level_actions(),
-            })
 
     def menu_actions(self):
         if self.selected_option == 0:
@@ -61,7 +48,10 @@ class Menu:
             game = GameLoop(self.selected_level if self.selected_level else path_to_level_1)
             game.game_loop()
         elif self.selected_option == 1:
-            self.select_level_loop()
+            self.selected_option = 0
+            self.page = 'level_choose'
+            self.options = [f"Level {i}: {getattr(eval(f'level_{i}'), 'maps', None)}" for i in range(1, 6)]
+            self.menu_loop()
         elif self.selected_option == 2:
             pygame.quit()
             return
@@ -70,4 +60,5 @@ class Menu:
         if self.selected_option >= 0:  # Ensure selected_option is non-negative
             self.selected_level = getattr(eval(f"level_{self.selected_option + 1}"), "maps", None)
             self.options = ["Start Game", "Choose Level", "Quit"]
+            self.page = 'menu'
             self.menu_loop()  # Return to the menu loop after selecting a level
