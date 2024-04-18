@@ -5,7 +5,6 @@ from gameloop.images.find_img import images
 class LevelRenderer:
 
     def create_level(self):
-        print(self.selected_level.finish_ticks)
         if self.selected_level:
             for ipos in range(len(self.selected_level.pos)):
                 pos = self.selected_level.pos[ipos]

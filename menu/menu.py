@@ -35,7 +35,7 @@ class Menu:
             MenuEventHandling.handle_events({
                 pygame.K_UP: lambda: setattr(self, 'selected_option', (self.selected_option - 1) % len(self.options)),
                 pygame.K_DOWN: lambda: setattr(self, 'selected_option', (self.selected_option + 1) % len(self.options)),
-                pygame.K_RETURN: lambda: self.menu_actions()if self.page == 'menu' else self.select_level_actions(),
+                pygame.K_RETURN: lambda: self.menu_actions() if self.page == 'menu' else self.select_level_actions(),
             })
 
 
@@ -44,7 +44,6 @@ class Menu:
     def menu_actions(self):
         if self.selected_option == 0:
             path_to_level_1 =  getattr(eval(f'level_{1}'), 'maps', None)
-            print(path_to_level_1)
             game = GameLoop(self.selected_level if self.selected_level else path_to_level_1)
             game.game_loop()
         elif self.selected_option == 1:
