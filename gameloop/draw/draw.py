@@ -1,5 +1,5 @@
 from gameloop.calculations.score_calculator import ScoreCalculator
-from gameloop.images.find_img import images
+from images.find_img import images
 import pygame
 from gameloop.calculations.background_renderer import BackgroundRenderer
 from gameloop.calculations.create_level import LevelRenderer

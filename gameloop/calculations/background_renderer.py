@@ -1,5 +1,5 @@
 from gameloop.calculations.lose_game import CollisionDetector
-from gameloop.images.find_img import images
+from images.find_img import images
 
 class BackgroundRenderer:
     def create_background(self):

@@ -1,14 +1,14 @@
 import pygame
 from gameloop.calculations.create_level import LevelRenderer
 from gameloop.game_loop import GameLoop
-from gameloop.screen.screen import DisplayManager
+from screen.screen import DisplayManager
 from pygame.locals import *
 from menu.actions.level_actions import LevelSelector
 from menu.actions.menu_actions import MenuHandler
 from menu.calculations.bird_animation import BirdAnimator
 from menu.draw.draw import MenuDrawer
 from menu.keyboard.event import MenuEventHandling
-from .images.find_img import images
+from images.find_img import images
 
 class Menu:
     def __init__(self):
