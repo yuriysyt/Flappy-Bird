@@ -1,6 +1,4 @@
 import pygame
-from gameloop.calculations.create_level import LevelRenderer
-from gameloop.game_loop import GameLoop
 from screen.screen import DisplayManager
 from pygame.locals import *
 from menu.actions.level_actions import LevelSelector
