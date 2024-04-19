@@ -20,12 +20,16 @@ class DrawingTool():
         self.screen.blit(images.treeImg, self.tree_pos)
 
         if self.losing:
+            self.fall_speed = 1
+            self.gravity = 0.2
             image_rect = images.gameoverImg.get_rect()
             image_rect.center = self.gameover_pos
             self.screen.blit(images.gameoverImg, (image_rect.x, image_rect.y - 100))
             self.screen.blit(images.welcomeImg,(image_rect.x, image_rect.y))
 
         if self.winning:
+            self.fall_speed = 1
+            self.gravity = 0.2
             image_rect = images.winImg.get_rect()
             image_rect.center = self.gameover_pos
             self.screen.blit(images.winImg, (image_rect.x, image_rect.y - 100))

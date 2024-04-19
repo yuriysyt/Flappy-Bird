@@ -5,11 +5,6 @@ from menu.actions.options_manager import LevelOptionsUpdater
 
 
 class MenuHandler:
-    def __init__(self, selected_option, selected_level, page, options):
-        self.selected_option = selected_option
-        self.selected_level = selected_level
-        self.page = page
-        self.options = options
 
     def menu_actions(self):
         if self.selected_option == 0:
