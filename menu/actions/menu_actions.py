@@ -11,11 +11,11 @@ class MenuHandler:
             path_to_level_1 = LevelOptionsUpdater.update_options(1)
             game = GameLoop(self.selected_level if self.selected_level else path_to_level_1)
             game.game_loop()
-        elif self.selected_option == 1:
+        elif self.selected_option == 1: #Choose level
             self.selected_option = 0
             self.page = 'level_choose'
-            self.options = [f"Level {i}: {LevelOptionsUpdater.update_options(self.selected_option)}" for i in range(1, 6)]
+            self.options = [f"Level {i}: " for i in range(1, 6)]
             self.menu_loop()
-        elif self.selected_option == 2:
+        elif self.selected_option == 2: #Quit
+            self.running = False
             pygame.quit()
-            return

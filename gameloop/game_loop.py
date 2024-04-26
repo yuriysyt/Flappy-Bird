@@ -1,5 +1,6 @@
 import pygame
 from pygame.locals import *
+from ErrorHandling.error_handling import ErrorHandler
 from gameloop.calculations.calculation import Calculations
 from gameloop.draw.draw import DrawingTool
 from gameloop.keyboard.keyboard import KeyboardManager
@@ -14,7 +15,12 @@ class GameLoop:
         Calculations.init(self) 
 
     def game_loop(self):
-        while self.running: 
-            Calculations.calculate(self)
-            KeyboardManager.handle_keyboard(self)
-            DrawingTool.draw(self)
+        try:
+            while self.running: 
+                Calculations.calculate(self)
+                KeyboardManager.handle_keyboard(self)
+                DrawingTool.draw(self)
+        except Exception as e:
+                ErrorHandler.main_error_handler(e)
+
+            
