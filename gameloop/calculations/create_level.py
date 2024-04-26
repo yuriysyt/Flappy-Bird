@@ -5,11 +5,11 @@ from images.find_img import images
 class LevelRenderer:
 
     def create_level(self):
-        if self.selected_level:
-            for ipos in range(len(self.selected_level.pos)):
-                pos = self.selected_level.pos[ipos]
+        if self.path_to_selected_level:
+            for ipos in range(len(self.path_to_selected_level.pos)):
+                pos = self.path_to_selected_level.pos[ipos]
                 if pos + self.tube_pos[0] > -400 and pos + self.tube_pos[0] < self.screen.get_height() + 1000:
-                    width, updown, height = self.selected_level.height[ipos], self.selected_level.updown[ipos], self.selected_level.height[ipos]
+                    width, updown, height = self.path_to_selected_level.height[ipos], self.path_to_selected_level.updown[ipos], self.path_to_selected_level.height[ipos]
                     param_scale = width, height
                     scaled_image = pygame.transform.scale(images.tubeImg, param_scale)
                     scaled_image_rotate = pygame.transform.scale(images.rotateTubeImg, param_scale)

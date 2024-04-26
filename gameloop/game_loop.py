@@ -7,9 +7,10 @@ from gameloop.keyboard.keyboard import KeyboardManager
 from screen.screen import DisplayManager
 
 class GameLoop:
-    def __init__(self, selected_level):
-        self.running = True 
-        self.selected_level = selected_level
+    def __init__(self,path_to_selected_level, selected_option):
+        self.running = True
+        self.path_to_selected_level = path_to_selected_level 
+        self.selected_option = selected_option
 
         DisplayManager.init(self)
         Calculations.init(self) 

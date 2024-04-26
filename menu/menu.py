@@ -26,7 +26,7 @@ class Menu:
         self.flap_timer = 0
         self.flap_interval = 10
         self.up = True
-        self.selected_level = None
+        self.path_to_selected_level = None
 
     def menu_loop(self):
         try:
@@ -36,10 +36,9 @@ class Menu:
                 pygame.display.flip()   
                 MenuEventHandling.handle_key_press(self)
 
-
                 self.clock.tick(30)
         except Exception as e:
-                ErrorHandler.menu_loop_error_handler(self, e)
+                ErrorHandler.menu_loop_error_handler(e)
 
     def handle_return_key_press(self):
         if self.page == 'menu':

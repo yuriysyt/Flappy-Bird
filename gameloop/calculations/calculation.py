@@ -1,6 +1,9 @@
+from FileHandling.file_handling import FileHandler
 import pygame
 from gameloop.calculations.init_pos import position
 from gameloop.calculations.score_calculator import ScoreCalculator
+from FileHandling.file_handling import FileHandler
+from menu.actions.options_manager import LevelOptionsUpdater
 
 class Calculations:
 
@@ -19,6 +22,7 @@ class Calculations:
             self.gravity = 0.2
             self.jump_strength = -0.3
             self.fall_speed = 0.2
+            self.file_handler = FileHandler()
         
     def calculate(self):
         
@@ -37,9 +41,15 @@ class Calculations:
             if self.ground_pos[0] < -300:
                 self.ground_pos[0] = 0
 
-            if int(ScoreCalculator.get_score(self)) > self.selected_level.finish_ticks:
+            if int(ScoreCalculator.get_score(self)) > self.path_to_selected_level.finish_ticks:
                 self.winning = True
-            
+                self.file_handler.set_level_completed(self.path_to_selected_level.__module__, True)
+
+                self.path_to_selected_level = LevelOptionsUpdater.update_options(self.selected_option + 1)
+                self.selected_option += 1
+
+
+
             if self.player_pos[1] < 0 or self.player_pos[1] > self.screen.get_width() - self.screen.get_width() / 4:
                 self.losing = True
 
