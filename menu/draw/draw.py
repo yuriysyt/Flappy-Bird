@@ -1,3 +1,14 @@
+"""
+Here we draw all our menu with calculated values (Data visualization)
+First, we fill the screen with blue color.
+Then, we check which option the user wants to select and color it white.
+If the option is selected - white, if not selected - gray.
+We also render the font on which our menu will be displayed
+And set its position.
+After that, we draw our text with the specified position.
+And then, we draw the bird with its position.
+"""
+
 class MenuDrawer:
     def draw_menu(self):
         if self.running:

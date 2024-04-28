@@ -2,6 +2,24 @@ import pygame
 from gameloop.calculations.lose_game import CollisionDetector
 from images.find_img import images
 
+"""
+This class is used to generate obstacles from the selected level in the levels folder
+
+First, we have a condition that if the level is selected, then we continue further
+
+The For Loop determines the number of elements in the selected level and its length using len()
+pos - gets all the positions of elements
+
+There is also a condition that if the position is within our field of view, then we calculate only its position
+We load width, updown, height - from our levels folder
+Then we set the value for how we need to change the object depending on the screen
+
+Then we change the values depending on the screen values ​​through scale 
+
+Next, we determine whether the obstacle (pipe) is located on top or bottom and change it accordingly
+
+The object is drawn and the class for collision detection with our obstacles (pipes) is enabled
+"""
 class LevelRenderer:
 
     def create_level(self):

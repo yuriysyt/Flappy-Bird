@@ -1,3 +1,12 @@
+"""
+This class is created to configure the level generation.
+pos - the position of the barrier (tubes)
+width - the width of the barrier (tubes)
+height - the length of the barrier (tubes)
+updown - specifies where the barrier will be located, 1 - top, 0 - bottom
+finish_ticks - the number of points needed to complete the level
+"""
+
 class maps:
     pos = [200, 900, 1400, 2000]
     width = [700, 1000, 200, 300]

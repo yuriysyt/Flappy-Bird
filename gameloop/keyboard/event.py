@@ -2,6 +2,13 @@ import pygame
 
 from gameloop.calculations.init_pos import position
 
+"""
+This class is created to handle user actions
+
+If they click on exit, then quit the game completely
+If the user loses or wins and clicks the button, then respawn the player from the beginning
+In other words, update their position to the initial one and allow them to play and press keys again
+"""
 class EventHandling:
     def handle_events(self):
         for event in pygame.event.get():

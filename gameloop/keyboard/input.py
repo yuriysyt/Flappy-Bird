@@ -2,6 +2,13 @@ import pygame
 
 from gameloop.calculations.jump import JumpCalculator
 
+"""
+This class is similar to event.py, but here we define key presses
+Such as esc, w
+
+Esc - exits the game
+W - makes the player jump if they decide to jump
+"""
 class InputHandling:
 
     def handle_input(self):

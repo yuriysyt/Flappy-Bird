@@ -1,6 +1,19 @@
 from gameloop.calculations.lose_game import CollisionDetector
 from images.find_img import images
 
+"""
+This class is used to generate infinite ground that acts as the floor
+
+First, we load the selected level (maps =)
+Then we set up a For Loop where we get the number of all obstacles through len(maps.pos)
+
+Next, we determine the number of floor elements, depending on the size of our level
+So, for example, the longer the level, the longer the ground will be
+
+We also use if-else statements to render only the visible part of the ground, not the entire ground
+
+Then we simply draw it on our screen using blit
+"""
 class BackgroundRenderer:
     def create_background(self):
         maps = self.path_to_selected_level
