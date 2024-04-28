@@ -31,10 +31,12 @@ class LevelSorter:
                         key, value = line.split('=')
                         passed = value.strip() == "True"
                         level_number = re.search(r'\d+', key).group()
+
                         if passed:
                             passed_levels.append(level_number)
                         else:
                             not_passed_levels.append(level_number)
+
                         levels[key] = passed
 
                 for level_number in not_passed_levels:

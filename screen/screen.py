@@ -1,10 +1,10 @@
 import pygame
 
 """
-Здесь мы иннициализируем pygame screen
-Говорим программе, что нам нужно FULLSCREEN
+Here we initialize the pygame screen
+We tell the program that we need FULLSCREEN
 
-Это используется в game_loop.py и в menu_loop.py
+This is used in game_loop.py and menu_loop.py
 """
 class DisplayManager:
     def init(self):

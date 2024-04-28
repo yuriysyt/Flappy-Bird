@@ -21,7 +21,7 @@ class EventHandling:
                 self.time_start_game = pygame.time.get_ticks()
                 if self.winning:
                     self.file_handler.set_level_completed(self.path_to_selected_level.__module__, True)
-                    if self.selected_option + 1 <= 5:
+                    if self.selected_option + 1 < 5:
 
                         self.path_to_selected_level = LevelOptionsUpdater.update_options(self.selected_option + 1)
                         self.selected_option += 1

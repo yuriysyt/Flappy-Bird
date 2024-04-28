@@ -36,6 +36,8 @@ class FileHandler:
         return self.config.getboolean("Levels", level_name)
 
     def set_level_completed(self, level_name, completed=True):
-        self.config.set("Levels", level_name, str(completed))
-        with open(self.filename, "w") as config_file:
-            self.config.write(config_file)
+        current_status = self.config.get("Levels", level_name)
+        if not current_status == "True" and completed:
+            self.config.set("Levels", level_name, str(completed))
+            with open(self.filename, "w") as config_file:
+                self.config.write(config_file)

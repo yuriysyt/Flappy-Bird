@@ -22,12 +22,15 @@ class MenuHandler:
             game = GameLoop() - Then, we initialize GameLoop, to which we pass information about the selected level
             If the user selected a level self.path_to_selected_level, then the selected level will be generated
             If not, the default level path_to_level_1 will be used
-            And so we pass the integer option self.selected_option, which is usually one less than the actual level
+            And so we pass the integer option self.level_number, which is usually one less than the actual level
             game.game_loop() - Then we start GameLoop with the specified parameters
             And proceed to level generation in the GameLoop class
             """
             path_to_level_1 = LevelOptionsUpdater.update_options(0)
-            game = GameLoop((self.path_to_selected_level if self.path_to_selected_level else path_to_level_1), self.selected_option)
+            if self.path_to_selected_level:
+                game = GameLoop(self.path_to_selected_level, self.level_number)
+            else:
+                game = GameLoop((path_to_level_1), 0)
             game.game_loop()
         elif self.selected_option == 1: # Choose level
             """
@@ -36,11 +39,11 @@ class MenuHandler:
             self.page = 'level_choose' - Then we say that we are in the level_choose stage for our function in menu.py
             self.options - Then we generate a list of 5 levels and show them to the user
             self.menu_loop() - And then we rerun menu_loop to display the levels
-            """
+            """ 
             self.selected_option = 0
             self.page = 'level_choose'
             sorted_levels = LevelSorter.sorting_cfg()
-            self.options = sorted_levels
+            self.options= sorted_levels
             
             self.menu_loop()
         elif self.selected_option == 2: # Quit

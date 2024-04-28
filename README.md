@@ -6,7 +6,7 @@
 The source code for this project is available on GitHub: https://github.com/yuriysyt/Flappy-Bird
 
 ## Identification
-- **Name:** Yuriy Sytnichenko
+- **Name:** Yurii Sytnichenko
 - **P-number:** P428742
 - **Course code:** IY499
 
@@ -47,7 +47,8 @@ python UnitTest.py
 The following libraries are used in this project:
 - Pygame
 - ConfigParser
-- Unittest (for unit testing)
+- re
+- sys
 
 ## Project Structure
 - `ErrorHandling/`: Contains classes for handling various errors.
@@ -70,6 +71,3 @@ python UnitTest.py
 ```
 
 This will run all the test cases defined in the `UnitTest.py` file.
-
-## Contributing
-Contributions to this project are welcome. If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
