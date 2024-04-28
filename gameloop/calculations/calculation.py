@@ -70,22 +70,9 @@ class Calculations:
             if pygame.time.get_ticks() > self.current_time + 300:
                 self.is_jumping = False
 
-            """
-            Condition to calculate winning the game, when the player wins
+            if self.ground_pos[0] < -300:
+                self.ground_pos[0] = 0
 
-            If the current tick count is greater than the level configuration, then the player has won
-            Then we set self.winning to True, indicating that the player has won
-
-            Then we use self.file_handler to write the player's achievement to the file
-             
-            self.path_to_selected_level - increase the level by one and move on to its generation
-            """
-            if int(ScoreCalculator.get_score(self)) > self.path_to_selected_level.finish_ticks:
-                self.winning = True
-                self.file_handler.set_level_completed(self.path_to_selected_level.__module__, True)
-
-                self.path_to_selected_level = LevelOptionsUpdater.update_options(self.selected_option + 1)
-                self.selected_option += 1
 
             """
             Here in this condition, if the player falls under the map, 

@@ -4,7 +4,6 @@ pos - the position of the barrier (tubes)
 width - the width of the barrier (tubes)
 height - the length of the barrier (tubes)
 updown - specifies where the barrier will be located, 1 - top, 0 - bottom
-finish_ticks - the number of points needed to complete the level
 """
 
 class maps:
@@ -12,4 +11,3 @@ class maps:
     width = [700, 1000, 200, 300]
     height = [100, 200, 200, 200]
     updown = [1, 0, 1, 0]
-    finish_ticks = 7500

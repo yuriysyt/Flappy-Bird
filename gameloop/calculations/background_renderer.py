@@ -17,9 +17,17 @@ Then we simply draw it on our screen using blit
 class BackgroundRenderer:
     def create_background(self):
         maps = self.path_to_selected_level
+        last_pos = None 
         for ipos in range(len(maps.pos)):
             current_pos = (400 * ipos) + self.background_pos[0]
             if current_pos > -1000 and current_pos < self.screen.get_height() + 1000:
                 background_rect = images.backgroundImg.get_rect(topleft=((400 * ipos) + self.background_pos[0], self.background_pos[1]))
                 self.screen.blit(images.backgroundImg, background_rect)
                 CollisionDetector.lose_game(self, background_rect, self.player_pos)
+                last_pos = current_pos
+                
+        """
+        If all obstacles are passed, indicate that the player has completed the level.
+        """
+        if last_pos and last_pos + 400 < 0:
+            self.winning = True

@@ -3,6 +3,7 @@ from SortingAlgorithm.sorting import LevelSorter
 from gameloop.game_loop import GameLoop
 from levels import level_1, level_2, level_3, level_4, level_5
 from menu.actions.options_manager import LevelOptionsUpdater
+import sys
 
 
 """
@@ -49,3 +50,4 @@ class MenuHandler:
             """
             self.running = False
             pygame.quit()
+            sys.exit(1)

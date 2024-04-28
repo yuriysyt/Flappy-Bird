@@ -106,13 +106,6 @@ class TestFlappyBird(unittest.TestCase):
         Calculations.calculate(self.game_loop)
         self.assertTrue(self.game_loop.losing)
 
-    def test_level_completion(self):
-        self.game_loop.winning = False
-        
-        self.game_loop.path_to_selected_level.finish_ticks = 1
-        Calculations.calculate(self.game_loop)
-        self.assertTrue(self.game_loop.winning)
-
 
 if __name__ == '__main__':
     unittest.main()

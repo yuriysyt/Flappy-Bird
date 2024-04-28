@@ -35,3 +35,4 @@ class LevelRenderer:
                     screen_position = (pos + self.tube_pos[0], self.screen.get_height() - 200 if updown == 0 else self.screen.get_height() / 1500)
                     self.screen.blit(scaled_image, screen_position)
                     CollisionDetector.lose_game(self, scaled_image.get_rect(topleft=screen_position), self.player_pos)
+                
