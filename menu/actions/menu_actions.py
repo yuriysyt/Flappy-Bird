@@ -39,7 +39,7 @@ class MenuHandler:
             """
             self.selected_option = 0
             self.page = 'level_choose'
-            sorted_levels = LevelSorter.sorting_cfg('config.cfg')
+            sorted_levels = LevelSorter.sorting_cfg()
             self.options = sorted_levels
             
             self.menu_loop()

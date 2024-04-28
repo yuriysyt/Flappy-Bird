@@ -1,9 +1,7 @@
 from FileHandling.file_handling import FileHandler
 import pygame
 from gameloop.calculations.init_pos import position
-from gameloop.calculations.score_calculator import ScoreCalculator
 from FileHandling.file_handling import FileHandler
-from menu.actions.options_manager import LevelOptionsUpdater
 
 """
 This class is created to perform minor calculations for the GameLoop

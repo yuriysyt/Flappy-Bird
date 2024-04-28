@@ -8,7 +8,6 @@ from gameloop.calculations.calculation import Calculations
 from gameloop.calculations.jump import JumpCalculator
 from gameloop.calculations.lose_game import CollisionDetector
 from gameloop.calculations.score_calculator import ScoreCalculator
-from levels import level_1
 from menu.actions.options_manager import LevelOptionsUpdater
 
 """
